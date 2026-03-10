@@ -16,7 +16,7 @@ parsing/index.c \
 sorting/radix_sort.c \
 sorting/small_sort.c \
 utils/ft_atoi.c \
-utils/ft_split.c
+utils/ft_split.c \
 
 OBJ = $(SRC:.c=.o)
 
