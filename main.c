@@ -15,10 +15,9 @@
 
 #include "push_swap.h"
 
-void	error_return(void)
+char	error_return(void)
 {
-	write(2, "Error\n", 6);
-	return (1);
+	return(write(2, "Error\n", 6));
 }
 
 int	main(int ac, char **av)
@@ -29,11 +28,11 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	if (!validate_input(ac, av))
-		return (error_return);
+		return (error_return());
 	a = parse_input(ac, av);
 	b = NULL;
 	if (!check_duplicates(a))
-		return (error_return);
+		return (error_return());
 	index_stack(a);
 	if (!is_sorted(a))
 	{

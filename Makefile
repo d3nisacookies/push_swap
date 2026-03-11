@@ -4,7 +4,6 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c \
-stack/stack_init.c \
 stack/stack_utils.c \
 operations/push.c \
 operations/swap.c \
@@ -15,6 +14,7 @@ parsing/check_errors.c \
 parsing/index.c \
 sorting/radix_sort.c \
 sorting/small_sort.c \
+sorting/sort_utils.c \
 utils/ft_atoi.c \
 utils/ft_split.c \
 

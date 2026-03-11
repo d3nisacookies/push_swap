@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akaung <akaung@student.42.sg>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/11 15:32:17 by akaung            #+#    #+#             */
+/*   Updated: 2026/03/11 15:32:17 by akaung           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -43,6 +55,8 @@ void	rrr(t_stack **a, t_stack **b);
 void	index_stack(t_stack *a);
 void	radix_sort(t_stack **a, t_stack **b);
 void	small_sort(t_stack **a, t_stack **b);
+void	push_min_to_b(t_stack **a, t_stack **b);
+int		find_min_index(t_stack *a);
 
 /* utils */
 int		ft_atoi(const char *str);
