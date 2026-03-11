@@ -1,31 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: akaung <akaung@student.42.sg>              +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
+/*   Created: 2026/03/11 15:26:04 by akaung            #+#    #+#             */
+/*   Updated: 2026/03/11 15:26:04 by akaung           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+void	error_return(void)
+{
+	write(2, "Error\n", 6);
+	return (1);
+}
 
 int	main(int ac, char **av)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 
 	if (ac < 2)
 		return (0);
-
 	if (!validate_input(ac, av))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-
+		return (error_return);
 	a = parse_input(ac, av);
 	b = NULL;
-
 	if (!check_duplicates(a))
-	{
-		write(2, "Error\n", 6);
-		/* free stack */
-		return (1);
-	}
-
+		return (error_return);
 	index_stack(a);
-
 	if (!is_sorted(a))
 	{
 		if (stack_size(a) <= 5)
@@ -33,7 +42,6 @@ int	main(int ac, char **av)
 		else
 			radix_sort(&a, &b);
 	}
-
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
