@@ -17,7 +17,7 @@
 
 char	error_return(void)
 {
-	return(write(2, "Error\n", 6));
+	return (write(2, "Error\n", 6));
 }
 
 int	main(int ac, char **av)
@@ -30,9 +30,12 @@ int	main(int ac, char **av)
 	if (!validate_input(ac, av))
 		return (error_return());
 	a = parse_input(ac, av);
-	b = NULL;
 	if (!check_duplicates(a))
+	{
+		free_stack(&a);
 		return (error_return());
+	}
+	b = NULL;
 	index_stack(a);
 	if (!is_sorted(a))
 	{

@@ -6,7 +6,7 @@
 /*   By: akaung <akaung@student.42.sg>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 15:46:39 by akaung            #+#    #+#             */
-/*   Updated: 2026/03/11 15:51:24 by akaung           ###   ########.fr       */
+/*   Updated: 2026/03/11 18:00:20 by akaung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,19 @@
 void	push_min_to_b(t_stack **a, t_stack **b)
 {
 	int	min_pos;
+	int	size;
 
 	min_pos = find_min_index(*a);
-	if (min_pos == 1)
-		sa(a);
-	else if (min_pos == 2)
+	size = stack_size(*a);
+	if (min_pos <= size / 2)
 	{
-		ra(a);
-		ra(a);
+		while (min_pos-- > 0)
+			ra(a);
 	}
-	else if (min_pos == 3)
-		rra(a);
-	else if (min_pos == 4)
+	else
 	{
-		rra(a);
-		rra(a);
+		while (min_pos++ < size)
+			rra(a);
 	}
 	pb(a, b);
 }

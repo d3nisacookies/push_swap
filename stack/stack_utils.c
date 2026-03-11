@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akaung <akaung@student.42.sg>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/11 16:02:16 by akaung            #+#    #+#             */
+/*   Updated: 2026/03/11 16:02:16 by akaung           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 t_stack	*new_node(int value)
@@ -28,8 +40,9 @@ void	add_back(t_stack **stack, t_stack *new)
 
 int	stack_size(t_stack *stack)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	while (stack)
 	{
 		stack = stack->next;
@@ -51,7 +64,7 @@ int	is_sorted(t_stack *a)
 
 void	free_stack(t_stack **stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	while (*stack)
 	{

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akaung <akaung@student.42.sg>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/11 16:03:28 by akaung            #+#    #+#             */
+/*   Updated: 2026/03/11 16:03:28 by akaung           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static int	count_words(char const *s, char c)
@@ -46,19 +58,11 @@ static char	*get_word(char const *s, char c, int *index)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+static int	fill_words(char **result, char const *s, char c)
 {
-	char	**result;
-	int		words;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
-	if (!s)
-		return (NULL);
-	words = count_words(s, c);
-	result = malloc(sizeof(char *) * (words + 1));
-	if (!result)
-		return (NULL);
 	i = 0;
 	j = 0;
 	while (s[i])
@@ -69,10 +73,27 @@ char	**ft_split(char const *s, char c)
 		{
 			result[j] = get_word(s, c, &i);
 			if (!result[j])
-				return (NULL);
+				return (0);
 			j++;
 		}
 	}
 	result[j] = NULL;
+	return (1);
+}
+
+
+char	**ft_split(char const *s, char c)
+{
+	char	**result;
+	int		words;
+
+	if (!s)
+		return (NULL);
+	words = count_words(s, c);
+	result = malloc(sizeof(char *) * (words + 1));
+	if (!result)
+		return (NULL);
+	if (!fill_words(result, s, c))
+		return (NULL);
 	return (result);
 }
