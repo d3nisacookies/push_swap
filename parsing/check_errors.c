@@ -12,6 +12,32 @@
 
 #include "../push_swap.h"
 
+static int	is_int_range(char *str)
+{
+	int			i;
+	int			sign;
+	long long	num;
+
+	i = 0;
+	sign = 1;
+	num = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i])
+	{
+		num = (num * 10) + (str[i] - '0');
+		if ((sign == 1 && num > 2147483647)
+			|| (sign == -1 && num > 2147483648LL))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	is_number(char *str)
 {
 	int	i;
@@ -59,7 +85,7 @@ static int	check_split_numbers(char **split)
 	j = 0;
 	while (split[j])
 	{
-		if (!is_number(split[j]))
+		if (!is_number(split[j]) || !is_int_range(split[j]))
 			return (0);
 		j++;
 	}
